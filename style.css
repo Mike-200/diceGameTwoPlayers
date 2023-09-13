@@ -1,0 +1,90 @@
+article div {
+  min-width: 250px;
+  max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.5;
+  font-family: cursive;
+  text-align: center;
+  margin: auto;
+}
+
+#instructions {
+  background-color: rgb(214, 247, 216);
+  border-radius: 25px;
+}
+
+#diceImage {
+  width: 50vw;
+  padding: 20px;
+  /* animation: jump-shaking 0.83s infinite; */
+}
+
+#interface {
+  background-color: rgb(214, 238, 238);
+  border-radius: 25px;
+  line-height: 0.5;
+}
+
+#buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#rollDiceButton {
+  margin-bottom: 20px;
+  scale: 2;
+}
+
+#holdButton {
+  margin-bottom: 20px;
+  scale: 2;
+}
+
+#backgroundImage {
+  background-image: url(./images/background_dice.png);
+}
+
+@media (max-width: 450px) {
+  #instructions {
+    line-height: 1.25;
+  }
+  #diceImage {
+    width: 225px;
+  }
+  #interface {
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 1000px) {
+  #diceImage {
+    width: 500px;
+  }
+}
+
+@keyframes jump-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateY(-9px);
+  }
+  35% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  55% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  65% {
+    transform: translateY(-9px) rotate(17deg);
+  }
+  75% {
+    transform: translateY(-9px) rotate(-17deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}

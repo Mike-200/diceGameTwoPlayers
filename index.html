@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roll the Dice!</title>
+    <!-- connect to the CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <article>
+        <div id="instructions">
+          <h2>2 PLAYER - ROLL THE DICE GAME !</h2>
+          <p>
+            Roll the dice as few times as you can to reach
+            <span id="targetPoints"></span> points
+          </p>
+          <p>Hold your score at any time but pass play over to your opponent</p>
+          <p>If you roll a 1, your score will be reset to the last score you held</p>
+        </div>
+        <div id="backgroundImage">
+          <img id="diceImage" src="./images/dice6.png" alt="" />
+        </div>
+        <div id="interface">
+          <p>Number of Rolls this game: <span id="rolls">0</span></p>
+          <h2>Score: <span id="displayScore">0</span></h2>
+          <p>Minimum number of rolls to beat: <span id="minRolls">10</span></p>
+          <h2 id="rollTheDiceText">Roll or Hold</h2>
+          <div id="buttons">
+            <button id="rollDiceButton">Roll</button>
+            <button id="holdButton">Hold</button>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- connect to the JavaScript file -->
+    <script src="./script.js"></script>
+  </body>
+</html>
