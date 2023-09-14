@@ -15,8 +15,20 @@ article div {
   border-radius: 25px;
 }
 
-#diceImage {
-  width: 50vw;
+#playersSideBySide{
+  display: flex;
+flex-direction: row;
+
+}
+
+#backgroundImage {
+  background-image: url(./images/background_dice.png);
+  background-size: 100px;
+  background-position: center;
+}
+
+.diceImageDisplay {
+  width: 30vw;
   padding: 20px;
   /* animation: jump-shaking 0.83s infinite; */
 }
@@ -27,24 +39,20 @@ article div {
   line-height: 0.5;
 }
 
-#buttons{
+#buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
-#rollDiceButton {
+.rollDiceButton {
   margin-bottom: 20px;
   scale: 2;
 }
 
-#holdButton {
+.holdButton {
   margin-bottom: 20px;
   scale: 2;
-}
-
-#backgroundImage {
-  background-image: url(./images/background_dice.png);
 }
 
 @media (max-width: 450px) {
