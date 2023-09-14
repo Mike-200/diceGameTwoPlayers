@@ -1,20 +1,19 @@
 // connect to html id's, classes, etc
 const diceImage1 = document.getElementById("diceImage1");
 const diceImage2 = document.getElementById("diceImage2");
-
 const displayScore1 = document.getElementById("displayScore1");
 const displayScore2 = document.getElementById("displayScore2");
-
 const rollDiceButton1 = document.getElementById("rollDiceButton1");
 const rollDiceButton2 = document.getElementById("rollDiceButton2");
-
 const rolls1 = document.getElementById("rolls1");
 const rolls2 = document.getElementById("rolls2");
-
 const minRolls = document.getElementById("minRolls");
 const rollTheDiceButton = document.getElementById("rollTheDiceButton");
-const rollTheDiceText = document.getElementById("rollTheDiceText");
-const holdButton = document.getElementById("holdButton");
+const rollTheDiceText1 = document.getElementById("rollTheDiceText1");
+const rollTheDiceText2 = document.getElementById("rollTheDiceText2");
+const holdButton1 = document.getElementById("holdButton1");
+const holdButton2 = document.getElementById("holdButton2");
+
 const targetPoints = document.getElementById("targetPoints");
 
 const numberOfPlayers = 1;
@@ -37,16 +36,17 @@ const holdButtonPressed = () => {
   }
 };
 
-holdButton.addEventListener("click", holdButtonPressed);
+holdButton1.addEventListener("click", holdButtonPressed);
+holdButton2.addEventListener("click", holdButtonPressed);
 
 const resetGame = () => {
   score[playerNumber] = 0;
   displayScore1.textContent = score[playerNumber];
-    displayScore2.textContent = score[playerNumber];
+  displayScore2.textContent = score[playerNumber];
 
   numberOfRolls = 0;
   rolls1.textContent = numberOfRolls;
-    rolls2.textContent = numberOfRolls;
+  rolls2.textContent = numberOfRolls;
 
   diceImage1.src = "./images/dice3d.png";
   diceImage2.src = "./images/dice3d.png";
@@ -61,7 +61,7 @@ const rollTheDice = () => {
 
     numberOfRolls++;
     rolls1.textContent = numberOfRolls;
-        rolls2.textContent = numberOfRolls;
+    rolls2.textContent = numberOfRolls;
 
     // generate a random number 1 to 6
     const diceRoll = Math.ceil(Math.random() * 6);
@@ -74,13 +74,13 @@ const rollTheDice = () => {
     } else {
       score[playerNumber] += diceRoll;
       displayScore1.textContent = score[playerNumber];
-            displayScore2.textContent = score[playerNumber];
+      displayScore2.textContent = score[playerNumber];
 
       if (score[playerNumber] > pointsToReach) {
         checkIfRecordSet();
       }
     }
-  }, Math.round(Math.random() * 3000) + 1000);
+  }, 0) // Math.round(Math.random() * 3000) + 1000);
   diceImage1.src = "./images/dice3d.png";
   diceImage2.src = "./images/dice3d.png";
 
@@ -90,7 +90,9 @@ const rollTheDice = () => {
 
 const checkIfRecordSet = () => {
   if (numberOfRolls < minimumNumberOfRolls) {
-    rollTheDiceText.textContent = "NEW RECORD SET - WELL DONE !";
+    rollTheDiceText1.textContent = "NEW RECORD SET - WELL DONE !";
+    rollTheDiceText2.textContent = "NEW RECORD SET - WELL DONE !";
+
     minimumNumberOfRolls = numberOfRolls;
     minRolls.textContent = minimumNumberOfRolls;
     setTimeout(() => {
@@ -105,13 +107,23 @@ const checkIfRecordSet = () => {
 const swapRollButton = (buttonFunctionality) => {
   rollDiceButton1.textContent = buttonFunctionality;
   if (buttonFunctionality === "Roll") {
-    rollTheDiceText.style.opacity = 0;
+    rollTheDiceText1.style.opacity = 0;
+    rollTheDiceText2.style.opacity = 0;
+
     rollDiceButton1.removeEventListener("click", resetGame);
+    rollDiceButton2.removeEventListener("click", resetGame);
+
     rollDiceButton1.addEventListener("click", rollTheDice);
+    rollDiceButton2.addEventListener("click", rollTheDice);
   } else if (buttonFunctionality === "Play again") {
-    rollTheDiceText.textContent = "GAME OVER !";
+    rollTheDiceText1.textContent = "GAME OVER !";
+    rollTheDiceText2.textContent = "GAME OVER !";
+
     rollDiceButton1.removeEventListener("click", rollTheDice);
+    rollDiceButton2.removeEventListener("click", rollTheDice);
+
     rollDiceButton1.addEventListener("click", resetGame);
+    rollDiceButton2.addEventListener("click", resetGame);
   }
 };
 
