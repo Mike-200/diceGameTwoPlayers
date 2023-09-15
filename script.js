@@ -66,7 +66,7 @@ let minimumNumberOfRolls = 10; // the record score
 const minRolls = document.getElementById("minRolls");
 
 // update the screen with how many points required to win
-const pointsToReach = 10;
+const pointsToReach = 20;
 const targetPoints = document.getElementById("targetPoints");
 targetPoints.textContent = pointsToReach;
 
@@ -121,7 +121,7 @@ const rollTheDice = () => {
         interfaceStart();
       }
     }
-  }, 0); // Math.round(Math.random() * 3000) + 1000);
+  }, Math.round(Math.random() * 3000) + 1000);
   diceImage[playerNumber].src = "./images/dice3d.png";
   diceImage[playerNumber].style.animation = "jump-shaking 0.83s infinite";
 };
