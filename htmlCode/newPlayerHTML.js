@@ -1,7 +1,7 @@
 export let htmlCode = `
           <div class="player">
             <div>
-              <img class="diceImageDisplay" src="" alt="dice image" />
+              <img class="diceImageDisplay" src="./images/dice3d.png" alt="dice image" />
             </div>
             <div id="interface">
               <p>Number of Rolls this game: <span class="rolls">0</span></p>

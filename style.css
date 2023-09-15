@@ -1,10 +1,10 @@
 main {
-  min-width: 540px;
+  min-width: 550px;
 }
 
-article {
+/* article {
   max-width: 1200px;
-}
+} */
 
 article div {
   display: flex;
@@ -15,7 +15,13 @@ article div {
   line-height: 0.5;
   font-family: cursive;
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
+}
+
+#selectNumberOfPlayers button{
+margin: 5px;
+/* display: flex; */
+/* justify-content: space-between; */
 }
 
 .instructions {
@@ -26,6 +32,7 @@ article div {
 #playersSideBySide {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   /* background image */
   background-image: url(./images/background_dice.png);
   background-size: 100px;
@@ -33,12 +40,17 @@ article div {
   margin: 16px 0;
 }
 
+.player{
+margin:5px;
+}
+
 .diceImageDisplay {
-  width: 30vw;
-  padding: 20px;
-  min-width: 250px;
-  max-width: 400px;
+  width: 90%;
+  padding: 10px 0;
+  /* min-width: 250px; */
+  max-width: 375px;
   /* animation: jump-shaking 0.83s infinite; */
+  
 }
 
 #interface {
@@ -46,6 +58,10 @@ article div {
   border-radius: 25px;
   line-height: 0.5;
   width: 90%;
+  /* margin: 50px; */
+  /* border:20px; */
+  /* max-width: 250px; */
+
 }
 
 #buttons {
@@ -64,11 +80,11 @@ article div {
   scale: 2;
 }
 
-@media (min-width: 1000px) {
+/* @media (min-width: 1000px) {
   #diceImage {
     width: 500px;
   }
-}
+} */
 
 @keyframes jump-shaking {
   0% {
