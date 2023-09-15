@@ -1,24 +1,42 @@
+import { htmlCode } from "./htmlCode/newPlayerHTML.js";
+//console.log(htmlCode)
+
 const diceImage = [];
 const displayScore = [];
 const rollDiceButton = [];
 const rolls = [];
 const rollTheDiceText = [];
 const holdButton = [];
-const player = [];
+const players = document.getElementById("playersSideBySide"); // the container of each player
+const player = []; // the individual players inside the container players
 const score = [];
 const numberOfRolls = [];
 const numberOfPlayers = 2;
 
+// read the html code from the file ./htmlCode/newPlaterHTML.txt
+// append this file as a child to the html code after id="playersSideBySide"
+// make the file dynamic so I can change all the 1's to the 2's, etc
+// just change 1 to ${i} and put the whole file in template literals ?
+
+// create the html code for the number of players
+// this needs creating first before all the elements can be accessed in the next loop
 for (let i = 1; i <= numberOfPlayers; i++) {
-  diceImage[i] = document.getElementById(`diceImage${i}`);
-  displayScore[i] = document.getElementById(`displayScore${i}`);
-  rollDiceButton[i] = document.getElementById(`rollDiceButton${i}`);
-  rolls[i] = document.getElementById(`rolls${i}`);
-  rollTheDiceText[i] = document.getElementById(`rollTheDiceText${i}`);
-  holdButton[i] = document.getElementById(`holdButton${i}`);
-  player[i] = document.getElementById(`player${i}`);
+  players.innerHTML += htmlCode;
 }
-// set up the record score (minimum number fo rolls)
+
+// get the elements from the html code
+for (let i = 1; i <= numberOfPlayers; i++) {
+  player[i] = document.getElementsByClassName("player")[i - 1];
+  diceImage[i] = document.getElementsByClassName("diceImageDisplay")[i - 1];
+  rolls[i] = document.getElementsByClassName("rolls")[i - 1];
+  displayScore[i] = document.getElementsByClassName("displayScore")[i - 1];
+  rollTheDiceText[i] =
+    document.getElementsByClassName("rollTheDiceText")[i - 1];
+  rollDiceButton[i] = document.getElementsByClassName("rollDiceButton")[i - 1];
+  holdButton[i] = document.getElementsByClassName("holdButton")[i - 1];
+}
+
+// set up the record score (minimum number of rolls)
 let minimumNumberOfRolls = 10; // the record score
 const minRolls = document.getElementById("minRolls");
 
