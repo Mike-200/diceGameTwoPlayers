@@ -8,6 +8,12 @@ const score = [];
 const numberOfRolls = [];
 const numberOfPlayers = 2;
 
+// const players=document.getElementById("playersSideBySide")
+// console.log(players)
+// const text="<h1>child</h1>"
+// players.appendChild(text)
+// console.log(players);
+
 for (let i = 1; i <= numberOfPlayers; i++) {
   diceImage[i] = document.getElementById(`diceImage${i}`);
   displayScore[i] = document.getElementById(`displayScore${i}`);
@@ -28,12 +34,12 @@ targetPoints.textContent = pointsToReach;
 let playerNumber = 0;
 
 const changePlayerNumber = () => {
-  swapRollButton("Nothing");
+  interfaceNothing();
   playerNumber++;
   if (playerNumber > numberOfPlayers) {
     playerNumber = 1;
   }
-  swapRollButton("Roll");
+  interfaceRoll();
 };
 
 const resetGame = () => {
@@ -47,9 +53,9 @@ const resetGame = () => {
     score[i] = 0;
     displayScore[i].textContent = score[i];
     changePlayerNumber();
-    swapRollButton("Nothing");
+    interfaceNothing();
   }
-  swapRollButton("Roll");
+  interfaceRoll();
 };
 
 const rollTheDice = () => {
@@ -70,7 +76,7 @@ const rollTheDice = () => {
       // check for a winner
       if (score[playerNumber] > pointsToReach) {
         checkIfRecordSet();
-        swapRollButton("Start");
+        interfaceStart();
       }
     }
   }, 0); // Math.round(Math.random() * 3000) + 1000);
@@ -83,44 +89,47 @@ const checkIfRecordSet = () => {
     minimumNumberOfRolls = numberOfRolls[playerNumber];
     minRolls.textContent = minimumNumberOfRolls;
     rollTheDiceText[playerNumber].textContent = "NEW RECORD !";
-    swapRollButton("Start");
   } else {
     rollTheDiceText[playerNumber].textContent = "YOU WIN !";
   }
 };
 
-const swapRollButton = (buttonFunctionality) => {
-  rollDiceButton[playerNumber].textContent = buttonFunctionality;
+const interfaceRoll = () => {
   rollTheDiceText[playerNumber].style.opacity = 0;
-  if (buttonFunctionality === "Roll") {
-    rollDiceButton[playerNumber].style.display = "block";
-    rollDiceButton[playerNumber].style.opacity = 1;
-    holdButton[playerNumber].style.display = "block";
-    holdButton[playerNumber].style.opacity = 1;
-    rollDiceButton[playerNumber].removeEventListener("click", resetGame);
-    rollDiceButton[playerNumber].addEventListener("click", rollTheDice);
-    holdButton[playerNumber].addEventListener("click", changePlayerNumber);
-  } else if (buttonFunctionality === "Nothing") {
-    rollDiceButton[playerNumber].style.display = "block";
-    rollDiceButton[playerNumber].style.opacity = 0;
-    holdButton[playerNumber].style.display = "block";
-    holdButton[playerNumber].style.opacity = 0;
-    rollDiceButton[playerNumber].removeEventListener("click", resetGame);
-    rollDiceButton[playerNumber].removeEventListener("click", rollTheDice);
-    holdButton[playerNumber].removeEventListener("click", changePlayerNumber);
-  } else if (buttonFunctionality === "Start") {
-    for (let i = 1; i <= numberOfPlayers; i++) {
-      rollDiceButton[i].style.display = "block";
-      rollDiceButton[i].style.opacity = 0;
-      holdButton[i].style.display = "none";
-      holdButton[i].style.opacity = 0;
-      rollDiceButton[i].removeEventListener("click", rollTheDice);
-      holdButton[i].removeEventListener("click", changePlayerNumber);
-    }
-    rollTheDiceText[playerNumber].style.opacity = 1;
-    rollDiceButton[playerNumber].style.opacity = 1;
-    rollDiceButton[playerNumber].addEventListener("click", resetGame);
+  rollDiceButton[playerNumber].textContent = "Roll";
+  rollDiceButton[playerNumber].style.display = "block";
+  rollDiceButton[playerNumber].style.opacity = 1;
+  holdButton[playerNumber].style.display = "block";
+  holdButton[playerNumber].style.opacity = 1;
+  rollDiceButton[playerNumber].removeEventListener("click", resetGame);
+  rollDiceButton[playerNumber].addEventListener("click", rollTheDice);
+  holdButton[playerNumber].addEventListener("click", changePlayerNumber);
+};
+
+const interfaceNothing = () => {
+  rollTheDiceText[playerNumber].style.opacity = 0;
+  rollDiceButton[playerNumber].style.display = "block";
+  rollDiceButton[playerNumber].style.opacity = 0;
+  holdButton[playerNumber].style.display = "block";
+  holdButton[playerNumber].style.opacity = 0;
+  rollDiceButton[playerNumber].removeEventListener("click", resetGame);
+  rollDiceButton[playerNumber].removeEventListener("click", rollTheDice);
+  holdButton[playerNumber].removeEventListener("click", changePlayerNumber);
+};
+
+const interfaceStart = () => {
+  rollDiceButton[playerNumber].textContent = "Start";
+  for (let i = 1; i <= numberOfPlayers; i++) {
+    rollDiceButton[i].style.display = "block";
+    rollDiceButton[i].style.opacity = 0;
+    holdButton[i].style.display = "none";
+    holdButton[i].style.opacity = 0;
+    rollDiceButton[i].removeEventListener("click", rollTheDice);
+    holdButton[i].removeEventListener("click", changePlayerNumber);
   }
+  rollTheDiceText[playerNumber].style.opacity = 1;
+  rollDiceButton[playerNumber].style.opacity = 1;
+  rollDiceButton[playerNumber].addEventListener("click", resetGame);
 };
 
 resetGame();
