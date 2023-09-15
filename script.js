@@ -4,15 +4,10 @@ const rollDiceButton = [];
 const rolls = [];
 const rollTheDiceText = [];
 const holdButton = [];
+const player = [];
 const score = [];
 const numberOfRolls = [];
 const numberOfPlayers = 2;
-
-// const players=document.getElementById("playersSideBySide")
-// console.log(players)
-// const text="<h1>child</h1>"
-// players.appendChild(text)
-// console.log(players);
 
 for (let i = 1; i <= numberOfPlayers; i++) {
   diceImage[i] = document.getElementById(`diceImage${i}`);
@@ -21,6 +16,7 @@ for (let i = 1; i <= numberOfPlayers; i++) {
   rolls[i] = document.getElementById(`rolls${i}`);
   rollTheDiceText[i] = document.getElementById(`rollTheDiceText${i}`);
   holdButton[i] = document.getElementById(`holdButton${i}`);
+  player[i] = document.getElementById(`player${i}`);
 }
 // set up the record score (minimum number fo rolls)
 let minimumNumberOfRolls = 10; // the record score
@@ -34,11 +30,13 @@ targetPoints.textContent = pointsToReach;
 let playerNumber = 0;
 
 const changePlayerNumber = () => {
+  player[playerNumber].style.opacity = 0.75;
   interfaceNothing();
   playerNumber++;
   if (playerNumber > numberOfPlayers) {
     playerNumber = 1;
   }
+  player[playerNumber].style.opacity = 1;
   interfaceRoll();
 };
 

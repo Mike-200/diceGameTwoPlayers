@@ -1,1 +1,22 @@
-<h1>TESTING1</h1>
+          <div id="player1">
+            <div>
+              <img
+                class="diceImageDisplay"
+                id="diceImage1"
+                src="./images/dice6.png"
+                alt=""
+              />
+            </div>
+            <div id="interface">
+              <p>Number of Rolls this game: <span id="rolls1">0</span></p>
+              <h2>Score: <span id="displayScore1">0</span></h2>
+              <h2 id="rollTheDiceText1">Roll or Hold</h2>
+              <div id="buttons">
+                <button class="rollDiceButton" id="rollDiceButton1">
+                  Roll
+                </button>
+                <button class="holdButton" id="holdButton1">Hold</button>
+              </div>
+            </div>
+          </div>
+
